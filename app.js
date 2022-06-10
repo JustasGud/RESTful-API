@@ -14,6 +14,18 @@ app.use(
 );
 app.use(express.static("public"));
 
+// mongoDB connection string
+mongoose.connect("mongodb://localhost:27017/wikiDB");
+
+// create schema
+const articleSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+});
+
+// creating article model
+const Article = mongoose.model("Article", articleSchema);
+
 //TODO
 
 app.listen(3000, function () {
